@@ -1,0 +1,44 @@
+<div class="panel">
+  <div class="panel-header">
+    <span class="dot"></span>
+    <span class="title">SPS · S7-1500 · Übersicht</span>
+    <span class="sub">SIEMENS / LIVE</span>
+  </div>
+
+  <table class="sps-table">
+    <thead>
+      <tr>
+        <th>Typ</th>
+        <th>Wert</th>
+        <th>Einheit</th>
+        <th>Timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="badge badge-ist">IST</span></td>
+        <td class="td-value green">{{ this.valueIst }}</td>
+        <td class="unit">°C</td>
+        <td class="td-time">
+          {{ this.timeIst }}
+        </td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-soll">SOLL</span></td>
+        <td class="td-value blue">{{ this.valueSoll }}</td>
+        <td class="unit">°C</td>
+        <td class="td-time">
+          {{ this.timeSoll }}
+        </td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-diff">DIFF</span></td>
+        <td class="td-value orange">{{ this.valueDiff }}</td>
+        <td class="unit">Δ°C</td>
+        <td class="td-time">
+          {{ this.timeDiff }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

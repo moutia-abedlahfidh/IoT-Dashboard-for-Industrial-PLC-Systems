@@ -1,0 +1,66 @@
+<div class="filter-bar">
+  <button class="filter-btn badge-ist" [class.active]="selectedType === 'ist'" (click)="selectType('ist')">
+    IST-Werte
+  </button>
+  <button class="filter-btn badge-soll" [class.active]="selectedType === 'soll'" (click)="selectType('soll')">
+    SOLL-Werte
+  </button>
+  <button class="filter-btn badge-diff" [class.active]="selectedType === 'diff'" (click)="selectType('diff')">
+    DIFF-Werte
+  </button>
+</div>
+
+<div class="panel">
+  <div class="panel-header">
+    <span class="dot"></span>
+    <span class="title">SPS · S7-1500 · Alle {{ selectedLabel }}-Werte</span>
+    <span class="sub">SIEMENS / LIVE</span>
+  </div>
+
+  <table class="sps-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>ID</th>
+        <th>Typ</th>
+        <th>Wert</th>
+        <th>Timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of pagedWerte; track item.id; let i = $index) {
+        <tr>
+          <td class="td-index">{{ (currentPage - 1) * pageSize + i + 1 | number:'2.0-0' }}</td>
+          <td class="td-id">{{ item.id | slice:0:12 }}...</td>
+          <td><span class="badge" [ngClass]="selectedBadgeClass">{{ selectedLabel }}</span></td>
+          <td class="td-value" [ngClass]="selectedValueClass">
+            {{ item.value }} <span class="unit">{{ selectedUnit }}</span>
+          </td>
+          <td class="td-time">
+            {{ item.time | date:'HH:mm:ss' }}
+            <div class="td-date">{{ item.time | date:'yyyy-MM-dd' }}</div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <div class="panel-footer">
+    <span>Einträge: <strong>{{ selectedWerte.length }}</strong></span>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <button class="page-btn" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">◀</button>
+
+      @for (page of totalPagesArray; track page) {
+        <button class="page-btn" [class.active]="page === currentPage" (click)="goToPage(page)">
+          {{ page }}
+        </button>
+      }
+
+      <button class="page-btn" [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">▶</button>
+    </div>
+
+    <span>Einheit: <strong>{{ selectedUnit }}</strong></span>
+  </div>
+</div>

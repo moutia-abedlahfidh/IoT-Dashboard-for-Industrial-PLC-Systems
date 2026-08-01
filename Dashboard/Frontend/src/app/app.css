@@ -1,0 +1,18 @@
+*{
+  margin : 0px ;
+}
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #0a0e13;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+app-leds,
+app-sensor,
+app-values {
+  display: block;
+  max-width: 1100px;
+  margin: 0 auto 30px auto;
+}

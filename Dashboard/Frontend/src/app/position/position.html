@@ -1,0 +1,52 @@
+<div class="page-container">
+
+    <div class="component">
+
+        <h2 class="title">GPS Position</h2>
+
+        <div class="position-container">
+
+            <div class="position-item">
+                <span class="label">Latitude </span>
+                <span class="value">{{latitude}}</span>
+            </div>
+
+            <div class="position-item">
+                <span class="label">longitude</span>
+                <span class="value">{{ longitude}}</span>
+            </div>
+
+            <div class="position-item">
+                <span class="label">Altitude</span>
+                <span class="value">{{altitude}} m</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="map-wrapper">
+  <!-- Coordinate Panel -->
+  <div class="info-panel">
+    <h3>📍 Position</h3>
+    <div class="coord-row">
+      <span class="label_map">Latitude</span>
+      <span class="value_map">{{ latitude  }}°</span>
+    </div>
+    <div class="coord-row">
+      <span class="label_map">Longitude</span>
+      <span class="value_map">{{ longitude  }}°</span>
+    </div>
+    <div class="coord-row">
+      <span class="label_map">Altitude</span>
+      <span class="value_map">
+        {{ altitude != null ? (altitude ) + ' m' : 'N/A' }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div id="map"></div>
+</div>

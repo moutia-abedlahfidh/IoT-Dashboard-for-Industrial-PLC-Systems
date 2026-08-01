@@ -1,0 +1,48 @@
+<div class="component">
+<div class="linie1">
+    <div class="circle1" [style.backgroundColor]="this.bits16[15]==='1' ? 'yellow' : 'white'"></div>
+    <div class="circle2" [style.backgroundColor]="this.bits16[14]==='1' ? 'yellow' : 'white'"></div>
+    <div class="circle3" [style.backgroundColor]="this.bits16[13]==='1' ? 'yellow' : 'white'"></div>
+    <div class="circle4" [style.backgroundColor]="this.bits16[12]==='1' ? 'yellow' : 'white'"></div>
+    <div class="circle5" [style.backgroundColor]="this.bits16[11]==='1' ? 'yellow' : 'white'"></div>
+    <div class="circle6" [style.backgroundColor]="this.bits16[10]==='1' ? 'yellow' : 'white'"></div>
+    <div class="circle7" [style.backgroundColor]="this.bits16[9]==='1' ? 'yellow' : 'white'"></div>
+    <div class="circle8" [style.backgroundColor]="this.bits16[8]==='1' ? 'yellow' : 'white'"></div>
+</div>
+
+<div class="linie2">
+    <div class="circle1" [style.backgroundColor]="this.bits16[7]==='1' ? 'yellow' : 'white'"></div>
+    <div class="circle2" [style.backgroundColor]="this.bits16[6]==='1' ? 'yellow' : 'white'"></div>
+    <div class="circle3" [style.backgroundColor]="this.bits16[5]==='1' ? 'yellow' : 'white'"></div>
+    <div class="circle4" [style.backgroundColor]="this.bits16[4]==='1' ? 'yellow' : 'white'"></div>
+    <div class="circle5" [style.backgroundColor]="this.bits16[3]==='1' ? 'yellow' : 'white'"></div>
+    <div class="circle6" [style.backgroundColor]="this.bits16[2]==='1' ? 'yellow' : 'white'"></div>
+    <div class="circle7" [style.backgroundColor]="this.bits16[1]==='1' ? 'yellow' : 'white'"></div>
+    <div class="circle8" [style.backgroundColor]="this.bits16[0]==='1' ? 'yellow' : 'white'"></div>
+</div>
+
+<div class="buttons">
+    <button class="btn danger"
+           (click)="sendControl(0)" [style.backgroundColor]="this.controle=== 0 ? 'white' : '#0382cb'" [style.color]="this.controle=== 0 ? '#0382cb' :'white'">
+        MODE 0
+    </button>
+
+    <button class="btn"
+          (click)="sendControl(1)" [style.backgroundColor]="this.controle=== 1 ? 'white' :'#0382cb'" [style.color]="this.controle=== 1 ? '#0382cb' :'white'" >
+        MODE 1
+    </button>
+
+    <button class="btn"
+          (click)="sendControl(2)" [style.backgroundColor]="this.controle=== 2 ? 'white' :'#0382cb'" [style.color]="this.controle=== 2 ? '#0382cb' :'white'" >
+        MODE 2
+    </button>
+
+    <button class="btn"
+          (click)="sendControl(3)"  
+          [style.backgroundColor]="this.controle=== 3 ? 'white' :'#0382cb'" [style.color]="this.controle=== 3 ? '#0382cb' :'white'"
+            >
+        MODE 3
+    </button>
+</div>
+
+</div>
