@@ -1,0 +1,81 @@
+services:
+  backend1:
+    build: .
+    container_name: backend1_container
+    ports:
+      - "8080:80"
+    depends_on:
+      - mongodb
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/seminar1?replicaSet=rs0
+      SERVER_PORT: 80
+      MANAGEMENT_INFLUX_METRICS_EXPORT_URI: http://influxdb:8086
+      MANAGEMENT_INFLUX_METRICS_EXPORT_DB: seminar_mqtt
+      MANAGEMENT_INFLUX_METRICS_EXPORT_ENABLED: "true"
+      MANAGEMENT_INFLUX_METRICS_EXPORT_STEP: 15s
+    volumes:
+      - ./logs:/logs
+
+  backend2:
+    build: ../RestfulWebApp
+    container_name: backend2_container
+    ports:
+      - "8081:80"
+    depends_on:
+      - mongodb
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/seminar1?replicaSet=rs0
+      SERVER_PORT: 80
+      MANAGEMENT_INFLUX_METRICS_EXPORT_URI: http://influxdb:8086
+      MANAGEMENT_INFLUX_METRICS_EXPORT_DB: seminar_mqtt
+      MANAGEMENT_INFLUX_METRICS_EXPORT_ENABLED: "true"
+      MANAGEMENT_INFLUX_METRICS_EXPORT_STEP: 15s
+    volumes:
+      - ../RestfulWebApp/logs:/logs
+
+  mongodb:
+    image: mongo:7
+    container_name: mongodb_container
+    ports:
+      - "27017:27017"
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    volumes:
+      - mongodb_data:/data/db
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo_express_container
+    ports:
+      - "8082:8081"
+    depends_on:
+      - mongodb
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017/
+  
+  influxdb:
+    image: influxdb:1.8
+    container_name: influxdb_container
+    ports:
+      - "8086:8086"
+    environment:
+      INFLUXDB_DB: seminar_mqtt
+      INFLUXDB_HTTP_AUTH_ENABLED: "false"
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana_container
+    ports:
+      - "3000:3000"
+    depends_on:
+      - influxdb
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+volumes:
+  mongodb_data:
+  influxdb_data:
+  grafana_data:
