@@ -6,6 +6,9 @@ pipeline {
         stage('RestfulWebApp') {
             steps {
                 echo 'Building Microservice 1'
+                dir('RestfulWebApp') {
+                    sh './gradlew test'
+                }
             }
         }
 
