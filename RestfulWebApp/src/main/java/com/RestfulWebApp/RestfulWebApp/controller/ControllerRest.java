@@ -36,6 +36,11 @@ public class ControllerRest {
         return service.liveSoll() ;
     }
 
+    @GetMapping()
+    public String hello(){
+        return "Hello From Jenkins" ;
+    }
+
     @GetMapping(value="/livediff", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> getLiveDiff() {
         log.info("GET /api/livediff - Live-Stream Temperatur Differenz angefordert");
