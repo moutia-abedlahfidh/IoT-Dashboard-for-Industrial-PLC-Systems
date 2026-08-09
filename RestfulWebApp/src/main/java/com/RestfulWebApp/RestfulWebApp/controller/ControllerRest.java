@@ -36,7 +36,7 @@ public class ControllerRest {
         return service.liveSoll() ;
     }
 
-    @GetMapping()
+    @GetMapping(value = "/jenkins")
     public String hello(){
         return "Hello From Jenkins" ;
     }
