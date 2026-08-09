@@ -20,7 +20,7 @@ class RestfulWebAppApplicationTests {
 
         String result = controller.hello();
 
-        assertEquals("Hello Jenkins", result);
+        assertEquals("Hello From Jenkins", result);
     }
 
 }
