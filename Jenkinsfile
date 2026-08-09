@@ -3,13 +3,13 @@ pipeline {
 
     stages {
 
-        stage('Microservice 1') {
+        stage('RestfulWebApp') {
             steps {
                 echo 'Building Microservice 1'
             }
         }
 
-        stage('Microservice 2') {
+        stage('MQTT') {
             steps {
                 echo 'Building Microservice 2'
             }
