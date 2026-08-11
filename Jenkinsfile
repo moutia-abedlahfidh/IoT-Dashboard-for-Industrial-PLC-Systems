@@ -16,6 +16,10 @@ pipeline {
         stage('MQTT') {
             steps {
                 echo 'Building Microservice 2'
+                dir('MQTT') {
+                    sh 'chmod +x gradlew'
+                    sh './gradlew test'
+                }
             }
         }
 
