@@ -24,7 +24,6 @@ class MqttIntegrationTest {
 
     @Test
     void mqttNachrichtWirdInMongoGespeichert() throws Exception {
-
         /*// MQTT simulieren
         long countBefore = mongoTemplate.getCollection("S7_1500/Temperatur/Ist").countDocuments();
         mqttService.simulateMessage("S7_1500/Temperatur/Ist", "23.57");
