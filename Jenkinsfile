@@ -28,5 +28,13 @@ pipeline {
                 echo 'Building Frontend'
             }
         }
+
+        stage ('Deploy') {
+            steps {
+                echo 'Begin Deploy on Docker-Container'
+                sh 'docker compose build backend1 backend2 Frontend'
+                sh 'docker compose build -d'
+            }
+        }
     }
 }
