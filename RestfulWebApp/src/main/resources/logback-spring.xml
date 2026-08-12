@@ -1,7 +1,7 @@
 <configuration>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/logs/restful-service.log</file>
+        <file>logs/restful-service.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>/logs/restful-service.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>10</maxHistory>
