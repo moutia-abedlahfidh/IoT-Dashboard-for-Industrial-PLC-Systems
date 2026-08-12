@@ -8,7 +8,7 @@ pipeline {
                 echo 'Building Microservice 1'
                 dir('RestfulWebApp') {
                     sh 'chmod +x gradlew'
-                    sh './gradlew clean test'
+                    sh './gradlew clean test --stacktrace'
                 }
             }
         }
