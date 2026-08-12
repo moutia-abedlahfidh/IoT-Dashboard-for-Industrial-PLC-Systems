@@ -31,9 +31,11 @@ pipeline {
 
         stage ('Deploy') {
             steps {
-                echo 'Begin Deploy on Docker-Container'
-                sh 'docker compose build backend1 backend2 Frontend'
-                sh 'docker compose build -d'
+                dir ('MQTT') {
+                    echo 'Begin Deploy on Docker-Container'
+                    sh 'docker compose build backend1 backend2 Frontend'
+                    sh 'docker compose up -d'
+                }
             }
         }
     }
